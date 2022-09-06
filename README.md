@@ -89,7 +89,7 @@ Run `npm install node-red-dashboard` in your Node-RED user directory;
  - *World map with markers*. Open http://localhost:1880/IPworldmap and make sure that under the worldmap node in the imported flow there is the text "connected 1" with green dot. When you'll trigger the flow and *msg* arrives to *worldmap node*, markers will start loading. If the number of IP Addresses is very large you will see markers after few minutes.
    
  - *Bar / Pie and Line chart*. If dashboard nodes have an orange/red triangle over them, open edit mode by clicking twice over every single node of this category in the workspace and select "Done" (nodes "Pie and Bar Charts description", "Pie chart", "Pie chart legend", "Bar chart", "Line chart", "Line Chart description"). Open the dashboard in http://localhost:1880/ui . If you have used dashboard nodes before in other flows click “IP Statistics” from side menu. When you'll trigger the flow and *msg* will arrive to *chart nodes*, data will start loading.
- "Pie chart" node and "Pie chart legend" node are disabled because they represent the same information as the bar chart, so you won't see them in the dashboard. To enable these nodes, open edit mode for both and click on "Disabled" in the lower left. The procedure to enable is the same as for disabling.
+ "Pie chart" node and "Pie chart legend" node are disabled because they represent the same information as the bar chart, so you won't see them in the dashboard. To enable these nodes, for each node open edit mode and click on "Disabled" in the lower left. The procedure to enable is the same as for disabling.
 
 **Final steps:**
 
