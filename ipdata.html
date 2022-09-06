@@ -1,0 +1,52 @@
+<script type="text/javascript">
+    RED.nodes.registerType('ipdata',{
+
+        category: 'measurements',
+        color: "#2E8B57",
+        defaults: {
+            name: {value:""},
+            infotype: {value:"country"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "ipdata.png",
+        label: function() {
+            return this.name||"ipdata";
+        },
+        
+        oneditprepare: function() {
+
+            const node = this;
+            const { string } = node;
+
+            $("#node-input-infotype").typedInput({
+                types: [
+                    {
+                        value: "option",
+                        multiple: "true",
+                        options: [
+                            { value: "country", label: "Country"},
+                            { value: "region", label: "Region"},
+                            { value: "city", label: "City"},
+                            { value: "coordinates", label: "Geographic coordinates"},
+                            { value: "zipcode", label: "Zipcode"},
+                            { value: "timezone", label: "Timezone"},
+                        ]
+                    }
+                ]
+            });
+        }
+    });
+    
+</script>
+
+<script type="text/html" data-template-name="ipdata">
+    <div class="form-row">
+        <label for="node-input-infotype"><i class="fa fa-tag"></i> Data type</label>
+        <input type="text" id="node-input-infotype">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
