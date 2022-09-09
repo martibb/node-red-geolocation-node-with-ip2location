@@ -49,8 +49,66 @@
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
-    <p>
-        This site or product includes IP2Location LITE data available from 
-        <a href="https://lite.ip2location.com">https://lite.ip2location.com</a>
-    </p>
+</script>
+
+<script type="text/html" data-help-name="ipdata">
+    <p>Provides IP Geolocation data from IP addresses in input using IP2Location LITE database.</p>
+    
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload
+            <span class="property-type">buffer</span>
+        </dt>
+        <dd> Payload should be an array of IP Addresses in IPv4 or IPv6 format. 
+            Example:
+            <pre>msg.payload = [ 2a10:3781:e22:1:220:4aff:fec8:23d7, 2a02:a467:f500:fd:220:4aff:fec8:2532, 94.214.123.162 ];
+            </pre>
+        </dd>
+    </dl>
+    
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Standard output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">buffer</span></dt>
+                <dd>Array with an object per IP Address in input. Every element has this properties:
+                    <ul>
+                        <li>ip</li>
+                        <li>ipNo (decimal version of the IP Address)</li>
+                        <li>Other properties based on data types selected in the node editor. They can be:
+                            <ul>
+                                <p>If "Country is selected":</p>
+                                <li>Country code</li>
+                                <li>Country name</li>
+                                <p>If "Region" is selected:</p>
+                                <li>Region</li>
+                                <p>If "City" is selected:</p>
+                                <li>City</li>
+                                <p>If "Geographic coordinates" is selected:</p>
+                                <li>Latitude</li>
+                                <li>Longitude</li>
+                                <p>If "Zipcode" is selected:</p>
+                                <li>Zipcode</li>
+                                <p>If "Timezone" is selected:</p>
+                                <li>Timezone</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>If an IP Address is not recognized from database, msg.payload will be:</p>
+                    <pre>msg.payload = { ip: "?", ipNo: "?" };</pre>
+                </dd>
+            </dl>
+        </li>
+    </ol>
+    
+    <h3>References</h3>
+        <ul>
+            <li><a href="https://github.com/martibb/node-red-geolocation-node-with-ip2location">GitHub</a> - the nodes github repository</li>
+            <li>
+                <p>
+                    This site or product includes IP2Location LITE data available from 
+                    <a href="https://lite.ip2location.com">https://lite.ip2location.com</a>
+                </p>
+            </li>
+        </ul>
 </script>
