@@ -1,5 +1,6 @@
 
 
+
 # IPData: a Node-RED geolocation node based on the IP2Location database
 
 This is a node for the Node-RED platform that allows to retrive geographical information about an IP address or a set of IP addresses. 
@@ -64,7 +65,17 @@ The *Data type* property allows you to select a list of possible types of output
  - Zipcode
  - Timezone
 
+Example of a possible node configuration, with two options selected:
+
+![IPData edit mode with Data type input not clicked.](https://user-images.githubusercontent.com/112756894/190022018-ec8c1895-4acb-42d3-98ef-a3c1491da09d.png)
+
+![IPData edit mode with Data type input clicked and two options selected.](https://user-images.githubusercontent.com/112756894/190022108-b8062d10-c185-4c4d-96b0-4a26e5835105.png)
+
+*IPData edit mode, with *Data type* and *Name* properties. Data type allows to select options with a multiple select box. Name is a property owned by all nodes that allows you to change node name on the workspace.*
+
 ## An example of Node-RED flow that uses IPData
+
+
 
 This is a Node-RED flow that compares the geographical information of RIPE Atlas probes with the geographical information extracted by IPData. 
 
@@ -72,10 +83,29 @@ In particular:
  - the flow retrives the list of connected probes belonging to the RIPE Atlas monitoring system;
  - Atlas holds some geographical information about its probes; such information is generally provided by the user hosting the probe at installation time; 
  - the flow downloads the geographical information of every probe as contained in the Atlas DB;
+
+![First part of the flow, with nodes forming a loop and a single function node getting IPv4 and IPv6 addresses.](https://user-images.githubusercontent.com/112756894/190022223-f120a036-89aa-4951-878a-dd7125eca4a5.png)
+
+*The first part of the flow. These nodes retrieve the list of connected probes and download the relative geographical information from Atlas DB.*
+
  - the flow uses the IP address of each probe to retrieve the geographical information contained in the IP2Location database using the IPData node; 
  - the geographical information in the Atlas DB is compared to the one extracted from IP2Location so to highlight possible inconsistencies (e.g. wrong configuration of a probe during installation time);
+
+![Use of the IPData node to obtain geolocation data from IP2Location. Merging IP2Location and Ripe Atlas data through a join node and then comparison to a function node.](https://user-images.githubusercontent.com/112756894/190022375-185abfe3-37c3-441e-8652-1a618402662d.png)
+
+*This flow part retrieve geographical information contained in the IP2Location DB with IPData node. The IPData output is merged using join node with geolocation data from Ripe Atlas retrieved before. The resulted msg is used to compare data from both services and detect possible inconsistencies.*
+
  - results are shown on a map; different colors are used depending on if the geolocation information seems to be correct or it is possibly wrong;
+
+![Flow part with nodes for building a world map.](https://user-images.githubusercontent.com/112756894/190023140-5ae5fbe6-99a9-4b6b-b457-76abae642245.png)
+
+*This flow parts creates: IP addresses markers on a worldmap with correct and uncorrect geolocation data with different colors.*
+
  - the flow finally provides its output also in a file and using some charts. 
+
+![The last part of the flow, with nodes for building an output on two types of file and for building charts.](https://user-images.githubusercontent.com/112756894/190023329-75db7975-76cb-44d4-aefd-5be4572bdc1c.png)
+
+*The last part of the flow with nodes that provide output on txt and json file, Bar/Pie chart and Line chart.* 
 
 The flow is an example of low-code application that uses the location information provided by the DB11 IP2Location database. 
 
@@ -108,9 +138,17 @@ Run `npm install node-red-dashboard` in your Node-RED user directory;
  - *Plain text / JSON string on file*. Set the absolute path of the files in edit mode of *write file nodes* (named *"plain text write file"* and *"JSON string write file"*) to write a text file and a JSON file. The write nodes will create new files if they don't exist. To open edit mode click twice on these nodes; to save select the red button "*Done*".
   
  - *World map with markers*. Open http://localhost:1880/IPworldmap and make sure that under the worldmap node in the imported flow there is the text "connected 1" with green dot. When you'll trigger the flow and *msg* arrives to *worldmap node*, markers will start loading. If the number of IP Addresses is very large, it will take some minutes for them to appear on the map.
+
+![World map with possible configuration of green and red markers.](https://user-images.githubusercontent.com/112756894/190023538-7410add0-61fc-47cf-b05d-5e951c899bbd.png)
+
+   *Possible markers configuration on world map.*
    
  - *Bar / Pie and Line chart*. If dashboard nodes have an orange/red triangle over them, start the edit mode by double-clicking them and select "Done" (nodes "Pie and Bar Charts description", "Pie chart", "Pie chart legend", "Bar chart", "Line chart", "Line Chart description"). Open the dashboard in http://localhost:1880/ui . If you have used dashboard nodes before in other flows click “IP Statistics” from side menu. When you'll trigger the flow and *msg* will arrive to *chart nodes*, data will start loading.
- 
+
+![Bar chart with possible configuration of bars.](https://user-images.githubusercontent.com/112756894/190023683-7dfb0d0d-cc7b-407b-87e1-3d61a07a94af.png)
+
+ *Possible bar chart output. It's possible to view wrong probes percentage when hovering over a bar.*
+
 
 **Final steps:**
 
