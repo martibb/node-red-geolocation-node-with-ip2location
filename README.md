@@ -141,7 +141,7 @@ Run `npm install node-red-dashboard` in your Node-RED user directory;
 
 ![World map with possible configuration of green and red markers.](https://user-images.githubusercontent.com/112756894/190023538-7410add0-61fc-47cf-b05d-5e951c899bbd.png)
 
-    *Possible position of RIPE Atlas probes on world map. The markers correspond to the positions associated with the IP addresses with correct geolocation in the case of green color, probably incorrect in the case of red.*
+*Possible position of RIPE Atlas probes on world map. The markers correspond to the positions associated with the IP addresses with correct geolocation in the case of green color, probably incorrect in the case of red.*
    
  - *Bar / Pie and Line chart*. If dashboard nodes have an orange/red triangle over them, start the edit mode by double-clicking them and select "Done" (nodes "Pie and Bar Charts description", "Pie chart", "Pie chart legend", "Bar chart", "Line chart", "Line Chart description"). Open the dashboard in http://localhost:1880/ui . If you have used dashboard nodes before in other flows click “IP Statistics” from side menu. When you'll trigger the flow and *msg* will arrive to *chart nodes*, data will start loading.
 
