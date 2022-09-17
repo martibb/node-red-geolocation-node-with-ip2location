@@ -145,7 +145,7 @@ Run `npm install node-red-dashboard` in your Node-RED user directory;
    
  - *Bar / Pie and Line chart*. If dashboard nodes have an orange/red triangle over them, start the edit mode by double-clicking them and select "Done" (nodes "Pie and Bar Charts description", "Pie chart", "Pie chart legend", "Bar chart", "Line chart", "Line Chart description"). Open the dashboard in http://localhost:1880/ui . If you have used dashboard nodes before in other flows click “IP Statistics” from side menu. When you'll trigger the flow and *msg* will arrive to *chart nodes*, data will start loading.
 
-![Bar chart with possible configuration of bars.](https://user-images.githubusercontent.com/112756894/190023683-7dfb0d0d-cc7b-407b-87e1-3d61a07a94af.png)
+![Bar chart with possible configuration of bars.](https://user-images.githubusercontent.com/112756894/190845483-325d6500-4ce6-4c84-b6a1-e0e77f315847.png)
 
  *Possible bar chart output. It's possible to view wrong probes percentage when hovering over a bar.*
 
